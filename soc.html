@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnosed by the Algorithm</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<div class="crack-overlay" id="crackOverlay" aria-hidden="true"></div>
+
+<!-- ════════════ ACT 1: THE CHECKER ════════════ -->
+<div id="act1" class="screen active" id="main-content">
+
+  <header class="checker-header">
+    <div class="checker-logo">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+      </svg>
+      MindScreen Pro
+      <span class="checker-logo-divider"></span>
+      <span class="checker-logo-tagline">Trusted by millions</span>
+    </div>
+  </header>
+
+  <main class="checker-main">
+    <div class="checker-inner">
+
+      <!-- Intro -->
+      <div id="introCard" class="card" style="text-align:center;">
+        <div class="intro-badge">Free Assessment · 2 minutes</div>
+        <h1 class="intro-title">Could you have an undiagnosed mental health condition?</h1>
+        <p class="intro-body">Answer a few quick questions to find out. This clinically-informed screening tool has helped over 4 million people understand their mental health.</p>
+        <div class="intro-stats">
+          <div class="stat-pill"><strong>4.2M+</strong>assessments taken</div>
+          <div class="stat-pill"><strong>94%</strong>found it helpful</div>
+          <div class="stat-pill"><strong>2 min</strong>to complete</div>
+        </div>
+        <button class="btn-primary" onclick="startQuiz()" aria-label="Begin the assessment">
+          Begin Assessment
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+      <!-- Progress -->
+      <div id="progressWrap" class="progress-wrap" style="display:none;" aria-live="polite">
+        <div class="progress-label">
+          <span id="progressText">Question 1 of 8</span>
+          <span id="progressPct">0%</span>
+        </div>
+        <div class="progress-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+
+      <!-- Question -->
+      <div id="questionCard" style="display:none;" aria-live="polite"></div>
+
+      <!-- Loading -->
+      <div id="loadingCard" class="loading-card" style="display:none;">
+        <div class="loading-spinner" aria-hidden="true"></div>
+        <p class="loading-text">Analyzing your responses<span class="analyzing-dots"><span>.</span><span>.</span><span>.</span></span></p>
+        <p class="loading-subtext">Cross-referencing DSM-5 criteria</p>
+      </div>
+
+      <!-- Result -->
+      <div id="resultCard" style="display:none;" aria-live="polite"></div>
+
+    </div>
+  </main>
+
+  <footer class="checker-footer">
+    This tool is for educational and informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment.
+  </footer>
+
+</div>
+
+<!-- ════════════ ACT 2: THE REVEAL ════════════ -->
+<div id="act2" class="screen" aria-label="Reveal">
+  <div class="reveal-content">
+    <p class="reveal-eyebrow">Wait.</p>
+    <h2 class="reveal-headline">
+      You weren't diagnosed<br>by a doctor.<br>
+      <em>You were diagnosed<br>by a pattern.</em>
+    </h2>
+    <p class="reveal-subtext">That quiz wasn't written by a clinician. The questions were designed to feel medical — vague enough that almost anyone answers "yes." You just experienced algorithmic medicalization.</p>
+    <div class="reveal-stat-box">
+      <div class="reveal-big-number">9 in 10</div>
+      <p class="reveal-stat-label">people who complete quizzes like this one receive a suggested disorder — regardless of their actual mental health status.</p>
+    </div>
+    <button class="btn-reveal" onclick="showAct3()">
+      Understand what just happened
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ════════════ ACT 3: EXPLAINER ════════════ -->
+<div id="act3" class="screen">
+
+  <div class="explainer-hero">
+    <div class="hero-inner">
+      <p class="explainer-hero-label">Diagnosed by the Algorithm</p>
+      <h2 class="explainer-hero-title">Medicalization Has Gone Viral</h2>
+      <p class="explainer-hero-sub">How social media platforms and online quiz design have become new engines of medicalization, and what sociology can tell us about it.</p>
+    </div>
+  </div>
+
+  <nav class="explainer-nav" aria-label="Sections">
+    <div class="explainer-nav-inner">
+      <span class="explainer-nav-title">Explore</span>
+      <ul class="explainer-nav-links">
+        <li><a href="#s1">What is medicalization?</a></li>
+        <li><a href="#s2">Social construction</a></li>
+        <li><a href="#s3">The algorithm</a></li>
+        <li><a href="#s4">Quiz design</a></li>
+        <li><a href="#s5">Why it matters</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Section 1 -->
+  <section class="explainer-section reveal-on-scroll" id="s1">
+    <div class="section-inner">
+      <div class="section-number">01</div>
+      <h2 class="section-title">What is medicalization?</h2>
+      <div class="section-body">
+        <p>Sociologist Peter Conrad defines <strong>medicalization</strong> as the process by which non-medical problems become defined and treated as medical conditions. This is usually seen in terms of illness or disorder (Conrad, 2007). Throughout history, this process has been driven by shifting "engines": first the medical profession itself, then biotechnology companies and pharmaceutical industries, and more recently, consumers seeking diagnoses.</p>
+        <p>What makes medicalization powerful is that it is not neutral. When a behavior or experience becomes a medical condition, it changes how we think about it, who has authority over it, and what solutions we reach for. Masturbation, homosexuality, and "nymphomania" were all once medical diagnoses. All of them reflect the cultural politics of their era far more than any biological reality.</p>
+        <div class="pull-quote">
+          <p>"Medicalization describes a process by which nonmedical problems become defined and treated as medical problems, usually in terms of illness and disorders."</p>
+        </div>
+        <p>Conrad's framework identified three modern engines of medicalization: the medical profession, the pharmaceutical and biotechnology industries, and consumer demand. But his analysis predates the social media era. A fourth engine has emerged, and it fits in your pocket.</p>
+      </div>
+      <div class="concept-grid">
+        <div class="concept-card reveal-on-scroll">
+          <div class="concept-tag">Course Concept</div>
+          <h3>Medicalization</h3>
+          <p>The process by which human conditions are redefined as medical problems requiring treatment. Not always wrong, but never politically neutral.</p>
+        </div>
+        <div class="concept-card reveal-on-scroll">
+          <div class="concept-tag">Key Source</div>
+          <h3>Conrad (2007)</h3>
+          <p><em>The Medicalization of Society</em> traces how the engines of medicalization have shifted from profession to industry to consumer culture.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2 -->
+  <section class="explainer-section reveal-on-scroll" id="s2">
+    <div class="section-inner">
+      <div class="section-number">02</div>
+      <h2 class="section-title">Diagnoses are socially constructed</h2>
+      <div class="section-body">
+        <p>Conrad and Barker (2010) argue that illness categories are not simply discovered in nature. They are <strong>culturally produced</strong>. Medical knowledge is always shaped by the social contexts in which it is created: who has power, what counts as evidence, whose experiences get named and legitimized.</p>
+        <p>This doesn't mean mental health conditions aren't real or that suffering isn't genuine. It means the categories we use to describe that suffering reflect particular historical, cultural, and institutional choices. The boundary between "quirky" and "ADHD," between "sensitive" and "BPD," is drawn by people, not by biology alone.</p>
+        <div class="pull-quote">
+          <p>When a teenager watches a video and thinks "that's exactly me", they are not discovering a pre-existing diagnosis. They are participating in the social construction of their own illness identity.</p>
+        </div>
+        <p>TikTok and Instagram accelerate this process at a scale no medical institution ever could. When a single "signs you have ADHD" video reaches 40 million views, the virality shapes how millions of people interpret their own minds.</p>
+      </div>
+      <div class="concept-grid">
+        <div class="concept-card reveal-on-scroll">
+          <div class="concept-tag">Course Concept</div>
+          <h3>Social Construction of Illness</h3>
+          <p>Illness categories are produced by social and cultural forces, not simply discovered through neutral science.</p>
+        </div>
+        <div class="concept-card reveal-on-scroll">
+          <div class="concept-tag">Key Source</div>
+          <h3>Conrad & Barker (2010)</h3>
+          <p>Argues that medical knowledge is always shaped by power, culture, and context with real consequences for who gets labeled and how.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3 -->
+  <section class="explainer-section reveal-on-scroll" id="s3">
+    <div class="section-inner">
+      <div class="section-number">03</div>
+      <h2 class="section-title">The algorithm as a new engine of medicalization</h2>
+      <div class="section-body">
+        <p>Conrad identified three historical engines of medicalization: the medical profession, the pharmaceutical and biotechnology industries, and consumers. Social media platforms represent a <strong>fourth engine</strong>, which is one Conrad never theorized because it didn't exist.</p>
+        <p>Karizat et al. (2021) show that TikTok users develop "algorithmic folk theories". This is described as informal understandings of how the platform's recommendation system works, and actively co-produce their own identities through this process. When a user engages with one ADHD video, the algorithm surfaces more. The user starts to see themselves reflected back.</p>
+        <div class="pull-quote">
+          <p>The algorithm doesn't know you have ADHD. It knows you kept watching ADHD content, and because of this, it shows you more.</p>
+        </div>
+      </div>
+      <div class="engine-list">
+        <div class="engine-item reveal-on-scroll">
+          <div class="engine-num">1</div>
+          <div class="engine-body">
+            <h4>The Medical Profession</h4>
+            <p>Doctors and psychiatrists historically held authority to define what counts as a disorder. Their power to name and label was the primary engine of medicalization in the 20th century.</p>
+          </div>
+        </div>
+        <div class="engine-item reveal-on-scroll">
+          <div class="engine-num">2</div>
+          <div class="engine-body">
+            <h4>Biotechnology & Pharma</h4>
+            <p>Drug companies expanded diagnostic categories to grow markets. Conditions like "social anxiety disorder" gained traction partly because medications existed to treat them.</p>
+          </div>
+        </div>
+        <div class="engine-item reveal-on-scroll">
+          <div class="engine-num">3</div>
+          <div class="engine-body">
+            <h4>Consumer Demand</h4>
+            <p>Patients began seeking diagnoses themselves through internet searches, patient advocacy groups, and direct-to-consumer advertising.</p>
+          </div>
+        </div>
+        <div class="engine-item new reveal-on-scroll">
+          <div class="engine-num">4</div>
+          <div class="engine-body">
+            <h4>The Algorithm ← new</h4>
+            <p>Recommendation systems on TikTok, Instagram, and YouTube now function as a fourth engine that contribute to surfacing diagnostic content at massive scale. In turn, this works by reinforcing identity through repetition, and creating feedback loops between self-perception and algorithmic output.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4 -->
+  <section class="explainer-section reveal-on-scroll" id="s4">
+    <div class="section-inner">
+      <div class="section-number">04</div>
+      <h2 class="section-title">Online quizzes specifically designed without neutrality</h2>
+      <div class="section-body">
+        <p>The symptom checker you just completed was a parody, but it wasn't far from the real thing. Dozens of websites offer free "ADHD tests," "autism screenings," and "BPD assessments" that look clinical but are designed to maximize engagement, not diagnostic accuracy.</p>
+        <p>Davis and Chouinard (2016) argue through <strong>affordance theory</strong> that designed objects not only enable behaviors, but also <em>request</em> them. A quiz format with a progress bar, official-sounding language, and a "result" at the end is not neutral. It is built to guide users toward a conclusion. The design itself is an argument: <em>you have something. Here is what it is.</em></p>
+        <div class="pull-quote">
+          <p>The progress bar filling toward a diagnosis isn't a neutral interface feature desgined only to show progress. This design cultivates an experience that makes medicalization feel inevitable.</p>
+        </div>
+        <p>This is medicalization as dark pattern. Interface design choices use the visual grammar of medical authority with clean layouts, clinical language, percentage scores to lend legitimacy to what are essentially engagement tools.</p>
+      </div>
+      <div class="concept-grid">
+        <div class="concept-card reveal-on-scroll">
+          <div class="concept-tag">Key Concept</div>
+          <h3>Affordances</h3>
+          <p>The features of a designed object that suggest or "request" specific uses. A quiz with a progress bar affords and nudges completion and result-seeking.</p>
+        </div>
+        <div class="concept-card reveal-on-scroll">
+          <div class="concept-tag">Additional Source</div>
+          <h3>Karizat et al. (2021)</h3>
+          <p>TikTok users co-produce identity through algorithmic interactions. For example, the platform shapes self-perception through what it shows you about yourself.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5 -->
+  <section class="explainer-section reveal-on-scroll" id="s5">
+    <div class="section-inner">
+      <div class="section-number">05</div>
+      <h2 class="section-title">Why this matters, and why it's complicated</h2>
+      <div class="section-body">
+        <p>This is not an argument that self-diagnosis is always wrong, or that ADHD and autism aren't real. Many people, especially women, people of color, and queer individuals, have been systematically underdiagnosed by a medical system that wasn't built to see them. Online communities and viral content have genuinely helped people access language for experiences they couldn't name.</p>
+        <p>But the sociology of medicalization asks us to think carefully about <strong>who benefits</strong> when more people identify as disordered. Pharmaceutical companies benefit. Platforms benefit, as mental health content drives enormous engagement. And sometimes the individuals benefit too: a diagnosis can mean community, accommodations, and self-understanding.</p>
+        <p>The problem is not that medicalization happens. The problem is that <strong>algorithmic medicalization happens invisibly</strong>, and is shaped by engagement logic rather than clinical judgment. Additionally, this occurs at a scale and speed no medical institution could match, to people who believe they are receiving objective information when they are in fact experiencing a designed process.</p>
+        <div class="pull-quote">
+          <p>The quiz felt medical. The algorithm felt like a mirror. Neither was neutral. Both were built.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Citations -->
+  <div class="citations-section">
+    <div class="citations-inner">
+      <p class="citations-label">References</p>
+      <div class="citation-item">Conrad, P. (2007). Medicalization. In <em>The medicalization of society: On the transformation of human conditions into treatable disorders</em> (pp. 3–14). Johns Hopkins University Press.</div>
+      <div class="citation-item">Conrad, P., & Barker, K. K. (2010). The social construction of illness: Key insights and policy implications. <em>Journal of Health and Social Behavior, 51</em>(S), S67–S79. <a href="https://doi.org/10.1177/0022146510383495" target="_blank" rel="noopener noreferrer">https://doi.org/10.1177/0022146510383495</a></div>
+      <div class="citation-item">Karizat, N., Delmonaco, D., Eslami, M., & Andalibi, N. (2021). Algorithmic folk theories and identity: How TikTok users co-produce knowledge of identity and engage in algorithmic resistance. <em>Proceedings of the ACM on Human-Computer Interaction, 5</em>(CSCW2), 1–44. <a href="https://doi.org/10.1145/3476046" target="_blank" rel="noopener noreferrer">https://doi.org/10.1145/3476046</a></div>
+      <div class="citation-item">Davis, J. L., & Chouinard, J. B. (2016). Theorizing affordances: From request to refuse. <em>Bulletin of Science, Technology & Society, 36</em>(4), 241–248.</div>
+      <div class="citation-item">McGann, P., & Conrad, P. (2017). Deviance, medicalization of. In G. Ritzer (Ed.), <em>The Blackwell encyclopedia of sociology</em>. Wiley. <a href="https://doi.org/10.1002/9781405165518.wbeosd049" target="_blank" rel="noopener noreferrer">https://doi.org/10.1002/9781405165518.wbeosd049</a></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const questions = [
+  { text: "Do you ever have trouble focusing on tasks, even when you want to?", options: ["Often", "Sometimes", "Rarely", "Never"] },
+  { text: "Do you sometimes feel like other people don't truly understand you?", options: ["Yes, frequently", "Occasionally", "Not really", "No"] },
+  { text: "Do you experience intense emotions that feel difficult to regulate?", options: ["Regularly", "Sometimes", "Occasionally", "Not often"] },
+  { text: "Do you find certain sounds, textures, or environments overwhelming?", options: ["Yes, often", "Sometimes", "Occasionally", "Rarely"] },
+  { text: "Do you ever feel restless or like you need to be doing something?", options: ["Frequently", "Sometimes", "Occasionally", "Rarely"] },
+  { text: "Do you tend to think in patterns, systems, or categories?", options: ["Yes, naturally", "Sometimes", "Not particularly", "No"] },
+  { text: "Do you find social situations draining, even when you enjoy them?", options: ["Often", "Sometimes", "Occasionally", "Rarely"] },
+  { text: "Do you ever feel like your emotions shift more quickly than other people's?", options: ["Yes, frequently", "Sometimes", "Occasionally", "Not really"] }
+];
+
+const diagnoses = [
+  { name: "Attention Deficit Hyperactivity Disorder (ADHD)", confidence: 87 },
+  { name: "Autism Spectrum Disorder (ASD)", confidence: 79 },
+  { name: "Borderline Personality Disorder (BPD)", confidence: 82 },
+  { name: "Generalized Anxiety Disorder (GAD)", confidence: 91 }
+];
+
+let currentQ = 0;
+
+function startQuiz() {
+  document.getElementById('introCard').style.display = 'none';
+  document.getElementById('progressWrap').style.display = 'block';
+  document.getElementById('questionCard').style.display = 'block';
+  showQuestion(0);
+}
+
+function showQuestion(idx) {
+  const total = questions.length;
+  const pct = Math.round((idx / total) * 100);
+  document.getElementById('progressText').textContent = `Question ${idx + 1} of ${total}`;
+  document.getElementById('progressPct').textContent = `${pct}%`;
+  document.getElementById('progressFill').style.width = `${pct}%`;
+  document.querySelector('.progress-track').setAttribute('aria-valuenow', pct);
+
+  const q = questions[idx];
+  document.getElementById('questionCard').innerHTML = `
+    <div class="card">
+      <div class="question-meta">Question ${idx + 1} of ${total}</div>
+      <h2 class="question-text">${q.text}</h2>
+      <ul class="options-list" role="list">
+        ${q.options.map(opt => `
+          <li>
+            <button class="option-btn" onclick="answerQuestion()" aria-label="${opt}">
+              <span class="option-dot" aria-hidden="true"></span>${opt}
+            </button>
+          </li>`).join('')}
+      </ul>
+    </div>`;
+}
+
+function answerQuestion() {
+  currentQ++;
+  if (currentQ < questions.length) {
+    const pct = Math.round((currentQ / questions.length) * 100);
+    document.getElementById('progressFill').style.width = `${pct}%`;
+    document.getElementById('progressPct').textContent = `${pct}%`;
+    document.getElementById('progressText').textContent = `Question ${currentQ + 1} of ${questions.length}`;
+    document.querySelector('.progress-track').setAttribute('aria-valuenow', pct);
+    showQuestion(currentQ);
+  } else {
+    showLoading();
+  }
+}
+
+function showLoading() {
+  document.getElementById('questionCard').style.display = 'none';
+  document.getElementById('progressFill').style.width = '100%';
+  document.getElementById('progressPct').textContent = '100%';
+  document.getElementById('progressText').textContent = 'Complete';
+  document.getElementById('loadingCard').style.display = 'block';
+  setTimeout(showResult, 2800);
+}
+
+function showResult() {
+  document.getElementById('loadingCard').style.display = 'none';
+  document.getElementById('progressWrap').style.display = 'none';
+  const d = diagnoses[Math.floor(Math.random() * diagnoses.length)];
+  const rc = document.getElementById('resultCard');
+  rc.style.display = 'block';
+  rc.innerHTML = `
+    <div class="card" style="text-align:center;">
+      <div class="result-label">Assessment Complete — Your Results</div>
+      <h2 class="result-diagnosis">${d.name}</h2>
+      <p class="result-confidence">Match confidence: <strong>${d.confidence}%</strong></p>
+      <div class="confidence-bar-wrap"><div class="confidence-bar-fill" id="confBar"></div></div>
+      <p class="result-cta">Based on your responses, your symptoms are consistent with ${d.name}. We recommend speaking with a healthcare provider to discuss these results.</p>
+      <button class="btn-primary" onclick="showReveal()" style="margin-top:var(--sp-2);">
+        See full report →
+      </button>
+    </div>`;
+  setTimeout(() => { document.getElementById('confBar').style.width = `${d.confidence}%`; }, 100);
+}
+
+function showReveal() {
+  const overlay = document.getElementById('crackOverlay');
+  overlay.classList.add('active');
+  setTimeout(() => {
+    document.getElementById('act1').classList.remove('active');
+    document.getElementById('act2').classList.add('active');
+    window.scrollTo(0, 0);
+    overlay.classList.remove('active');
+  }, 600);
+}
+
+function showAct3() {
+  document.getElementById('act2').classList.remove('active');
+  document.getElementById('act3').classList.add('active');
+  window.scrollTo(0, 0);
+  initScrollReveal();
+}
+
+function initScrollReveal() {
+  const els = document.querySelectorAll('.reveal-on-scroll');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  els.forEach(el => io.observe(el));
+}
+</script>
+</body>
+</html>
